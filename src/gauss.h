@@ -2,6 +2,9 @@
 #define gauss_h
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <ctype.h>
 
 typedef struct {
     unsigned int rows, cols;
@@ -13,15 +16,13 @@ void initMatrixFromInput(matrix* mat, unsigned int rows, unsigned int cols);
 void initMatrixRandomized(matrix* mat, unsigned int rows, unsigned int cols);
 void initMatrixFromArray(matrix* mat, unsigned int rows, unsigned int cols, double* arr);
 void initMatrixWithValue(matrix* mat, unsigned int rows, unsigned int cols, double value);
-void initMatrixFromFile(matrix* mat, unsigned int rows, unsigned int cols, const char* filepath);
+void initMatrixFromFilepath(matrix* mat, unsigned int rows, unsigned int cols, const char* filepath);
 
 // matrix destructor
-void freeMatrix(matrix* mat);
+void freeMatrix(matrix* mat); 
 
 // outputting matrix
 void printMatrix(matrix* mat);
 void writeMatrix(matrix* mat, const char* filepath);
-
-
 
 #endif
