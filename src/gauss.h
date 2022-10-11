@@ -12,11 +12,11 @@ typedef struct {
 } matrix;
 
 // All initializers of matrix
+void initMatrixFromFilepath(matrix* mat, const char* filepath);
 void initMatrixFromInput(matrix* mat, unsigned int rows, unsigned int cols);
 void initMatrixRandomized(matrix* mat, unsigned int rows, unsigned int cols);
 void initMatrixFromArray(matrix* mat, unsigned int rows, unsigned int cols, double* arr);
 void initMatrixWithValue(matrix* mat, unsigned int rows, unsigned int cols, double value);
-void initMatrixFromFilepath(matrix* mat, unsigned int rows, unsigned int cols, const char* filepath);
 
 // matrix destructor
 void freeMatrix(matrix* mat); 

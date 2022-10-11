@@ -57,14 +57,21 @@ void initMatrixWithValue(matrix* mat, unsigned int rows, unsigned int cols, doub
 
 }
 
-void initMatrixFromFilepath(matrix* mat, unsigned int rows, unsigned int cols, const char* filepath) {
-    allocateMatrix(mat, rows, cols);
-
+void initMatrixFromFilepath(matrix* mat, const char* filepath) {
     FILE* inputFile = fopen(filepath, "r");
 
     if (!inputFile) {
         //TODO: Diagnostic
     }
+
+    unsigned int rows, cols;
+    fscanf(inputFile, "%i %i", &rows, &cols);
+
+    allocateMatrix(mat, rows, cols);
+
+    for (int i = 0; i < mat->rows; i++)
+        for (int j = 0; j < mat->cols; j++)
+            fscanf(inputFile, "%lf", &mat->data[i][j]);
 
     fclose(inputFile);
 }
