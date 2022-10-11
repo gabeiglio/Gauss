@@ -22,9 +22,16 @@ void allocateMatrix(matrix* mat, unsigned int rows, unsigned int cols) {
     mat->data = tempData;
 }
 
-void initMatrixFromInput(matrix* mat, unsigned int rows, unsigned int cols) {
+void initMatrixFromInput(matrix* mat) {
+    unsigned int rows, cols;
+
+    fscanf(stdin, "%i %i", &rows, &cols);
     allocateMatrix(mat, rows, cols);
 
+
+    for (int i = 0; i < mat->rows; i++)
+        for (int j = 0; j < mat->cols; j++)
+            fscanf(stdin, "%lf", &mat->data[i][j]);
 
 }
 
