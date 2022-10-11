@@ -7,9 +7,6 @@ void allocateMatrix(matrix* mat, unsigned int rows, unsigned int cols) {
         //return NULL;
     }
 
-    // Allocate actual matrix object
-    matrix* temp = (matrix*)malloc(sizeof(matrix));
-
     // Allocate matrix data    
     double** tempData = (double**)malloc(rows * sizeof(double*));
     for (int i = 0; i < rows; i++)
@@ -20,9 +17,14 @@ void allocateMatrix(matrix* mat, unsigned int rows, unsigned int cols) {
         //return NULL;
     }
     
-    mat->rows = rows;    
+    mat->rows = rows;
     mat->cols = cols;
     mat->data = tempData;
+}
+
+void initMatrixFromInput(matrix* mat, unsigned int rows, unsigned int cols) {
+    allocateMatrix(mat, rows, cols);
+
 
 }
 
@@ -34,6 +36,15 @@ void initMatrixRandomized(matrix* mat, unsigned int rows, unsigned int cols) {
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < cols; j++)
             mat->data[i][j] = (rand() % (101));
+
+}
+
+void initMatrixFromArray(matrix* mat, unsigned int rows, unsigned int cols, double* arr) {
+    allocateMatrix(mat, rows, cols);
+
+    for (int i = 0; i < mat->rows; i++)
+        for (int j = 0; j < mat->cols; j++)
+            mat->data[i][j] = arr[(i * cols) + j];
 
 }
 
@@ -56,6 +67,16 @@ void initMatrixFromFilepath(matrix* mat, unsigned int rows, unsigned int cols, c
     }
 
     fclose(inputFile);
+}
+
+void freeMatrix(matrix* mat) {
+    mat->rows = 0;
+    mat->cols = 0;
+
+    for (int i = 0; i < mat->rows; i++)
+        free(mat->data[i]);
+
+    free(mat->data);
 }
 
 void printMatrix(matrix* mat) {
