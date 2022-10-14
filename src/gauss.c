@@ -101,3 +101,22 @@ void printMatrix(matrix* mat) {
         printf("\n");
     }
 }
+
+void writeMatrix(matrix* mat, const char* filepath) {
+    FILE* outputFile = fopen(filepath, "w");
+
+    fputc('a', outputFile);
+
+    for (int i = 0; i < mat->rows; i++) {
+        for (int j = 0; j < mat->cols; j++) {
+            fputc(mat->data[i][j], outputFile);
+        }
+        fputc('\n', outputFile);
+    }
+
+    fclose(outputFile);
+}
+
+void scalarOperation(matrix* mat, double scalar, operation op) {
+        
+}

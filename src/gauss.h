@@ -34,9 +34,10 @@ void freeMatrix(matrix* mat);
 void printMatrix(matrix* mat);
 void writeMatrix(matrix* mat, const char* filepath);
 
-// Scalar operations
-void scalarOperation(matrix* mat, double scalar, );
+// Getters and Setters
 
+// Scalar operations
+void scalarOperation(matrix* mat, double scalar, operation op);
 
 // Basic matrix operations
 void rowSwap(matrix* mat, unsigned int row1, unsigned int row2);
