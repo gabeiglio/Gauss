@@ -21,11 +21,11 @@ typedef enum {
 } operation;
 
 // All initializers of matrix
-void initMatrixFromInput(matrix* mat);
-void initMatrixFromFilepath(matrix* mat, const char* filepath);
-void initMatrixRandomized(matrix* mat, unsigned int rows, unsigned int cols);
-void initMatrixFromArray(matrix* mat, unsigned int rows, unsigned int cols, double* arr);
-void initMatrixWithValue(matrix* mat, unsigned int rows, unsigned int cols, double value);
+matrix* initMatrixFromInput();
+matrix* initMatrixFromFilepath(const char* filepath);
+matrix* initMatrixRandomized(unsigned int rows, unsigned int cols);
+matrix* initMatrixFromArray(unsigned int rows, unsigned int cols, double* arr);
+matrix* initMatrixWithValue(unsigned int rows, unsigned int cols, double value);
 
 // Matrix destructor
 void freeMatrix(matrix* mat); 
@@ -35,6 +35,8 @@ void printMatrix(matrix* mat);
 void writeMatrix(matrix* mat, const char* filepath);
 
 // Getters and Setters
+matrix* getColumn(matrix* mat, unsigned int col);
+matrix* getRow(matrix* mat, unsigned int row);
 
 // Scalar operations
 void scalarOperation(matrix* mat, double scalar, operation op);
