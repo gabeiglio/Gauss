@@ -35,7 +35,7 @@ void printMatrix(matrix* mat);
 void writeMatrix(matrix* mat, const char* filepath);
 
 // Getters and Setters
-matrix* getColumn(matrix* mat, unsigned int col);
+matrix* getCol(matrix* mat, unsigned int col);
 matrix* getRow(matrix* mat, unsigned int row);
 
 // Scalar operations
