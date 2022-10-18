@@ -180,3 +180,13 @@ void colSwap(matrix* mat, unsigned int col1, unsigned int col2) {
         mat->data[i][col2 - 1] = tmp;
     }
 }
+
+matrix* transpose(matrix* mat) {
+    matrix* result = allocateMatrix(mat->cols, mat->rows);
+
+    for (int i = 0; i < mat->rows; i++)
+        for (int j = 0; j < mat->cols; j++)
+            result->data[j][i] = mat->data[i][j];
+
+    return result;
+}
