@@ -128,7 +128,7 @@ void writeMatrix(matrix* mat, const char* filepath) {
     fclose(outputFile);
 }
 
-matrix* getColumn(matrix* mat, unsigned int col) {
+matrix* getCol(matrix* mat, unsigned int col) {
     if (col > mat->cols) { return NULL; }
 
     matrix* ptr = allocateMatrix(mat->rows, 1);
@@ -140,5 +140,12 @@ matrix* getColumn(matrix* mat, unsigned int col) {
 }
 
 matrix* getRow(matrix* mat, unsigned int row) {
+    if (row > mat->rows) { return NULL; }
 
+    matrix* ptr = allocateMatrix(1, mat->cols);
+
+    for (int i = 0; i < mat->cols; i++)
+        ptr->data[0][i] = mat->data[row - 1][i];
+
+    return ptr;
 }
