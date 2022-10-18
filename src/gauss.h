@@ -44,8 +44,9 @@ void scalarOperation(matrix* mat, double scalar, operation op);
 // Basic matrix operations
 void rowSwap(matrix* mat, unsigned int row1, unsigned int row2);
 void colSwap(matrix* mat, unsigned int col1, unsigned int col2);
-void transpose(matrix* output, matrix* input);
-void addMatrix(matrix* result, matrix* mat1, matrix* mat2);
-void multiplyMatrix(matrix* result, matrix* mat1, matrix* mat2);
+
+matrix* transpose(matrix* mat);
+matrix* addMatrix(matrix* mat1, matrix* mat2);
+matrix* multiplyMatrix(matrix* mat1, matrix* mat2);
 
 #endif
