@@ -149,3 +149,34 @@ matrix* getRow(matrix* mat, unsigned int row) {
 
     return ptr;
 }
+
+void scalarOperation(matrix* mat, double scalar, operation op) {
+    for (int i = 0; i < mat->rows; i++)
+        for (int j = 0; j < mat->cols; j++)
+            switch (op) {
+                case add: mat->data[i][j] += scalar; break;
+                case substract: mat->data[i][j] -= scalar; break;
+                case divide: mat->data[i][j] /= scalar; break;
+                case multiply: mat->data[i][j] *= scalar; break;
+            }
+}
+
+void rowSwap(matrix* mat, unsigned int row1, unsigned int row2) {
+    if (row1 > mat->rows || row2 > mat->rows)
+        return;
+
+    double* tmp = mat->data[row1 - 1];
+    mat->data[row1 - 1] = mat->data[row2 - 1];
+    mat->data[row2 - 1] = tmp;
+}
+
+void colSwap(matrix* mat, unsigned int col1, unsigned int col2) {
+    if (col1 > mat->cols || col2 > mat->cols)
+        return;
+
+    for (int i = 0; i < mat->rows; i++) {
+        double tmp = mat->data[i][col1 - 1];
+        mat->data[i][col1 - 1] = mat->data[i][col2 - 1];
+        mat->data[i][col2 - 1] = tmp;
+    }
+}
