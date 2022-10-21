@@ -190,3 +190,24 @@ matrix* transpose(matrix* mat) {
 
     return result;
 }
+
+double calculateMatrixProduct(unsigned int row, unsigned int col, matrix* mat1, matrix* mat2) {
+    double result = 0;
+
+    for (int i = 0; i < mat1->cols; i++)
+        result += mat1->data[row][i] * mat2->data[i][col];
+
+    return result;
+}
+
+matrix* multiplyMatrix(matrix* mat1, matrix* mat2) {
+    if (mat1->cols != mat2->rows) return NULL;
+    
+    matrix* ptr = allocateMatrix(mat1->rows, mat2->cols);
+
+    for (int i = 0; i < ptr->rows; i++)
+        for (int j = 0; j < ptr->cols; j++)
+            ptr->data[i][j] = calculateMatrixProduct(i, j, mat1, mat2);
+
+    return ptr;
+}
