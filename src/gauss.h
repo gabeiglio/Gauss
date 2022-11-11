@@ -38,6 +38,9 @@ void writeMatrix(matrix* mat, const char* filepath);
 matrix* getCol(matrix* mat, unsigned int col);
 matrix* getRow(matrix* mat, unsigned int row);
 
+void setCol(matrix* mat, unsigned int col, double value);
+void setRow(matrix* mat, unsigned int row, double value);
+
 // Scalar operations
 void scalarOperation(matrix* mat, double scalar, operation op);
 

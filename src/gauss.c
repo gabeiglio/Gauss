@@ -150,6 +150,28 @@ matrix* getRow(matrix* mat, unsigned int row) {
     return ptr;
 }
 
+void setCol(matrix* mat, unsigned int col, double value) {
+    if (col > mat->cols) {
+        fprintf(stderr, "[ERROR] Trying to set a value in column: %i, but the matrix has %i columns", col, mat->cols);
+        return;
+    }
+
+    for (int i = 0; i < mat->rows; i++)
+        mat->data[i][col] = value;
+
+}
+
+void setRow(matrix* mat, unsigned int row, double value) {
+    if (row > mat->rows) {
+        fprintf(stderr, "[ERROR] Trying to set a value in row: %i, but the matrix has %i columns", row, mat->cols);
+        return;
+    }
+
+    for (int i = 0; i < mat->cols; i++)
+        mat->data[row][i] = value;
+
+}
+
 void scalarOperation(matrix* mat, double scalar, operation op) {
     for (int i = 0; i < mat->rows; i++)
         for (int j = 0; j < mat->cols; j++)
