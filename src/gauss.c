@@ -200,7 +200,7 @@ double calculateMatrixProduct(unsigned int row, unsigned int col, matrix* mat1, 
     return result;
 }
 
-matrix* multiplyMatrix(matrix* mat1, matrix* mat2) {
+matrix* mulMatrix(matrix* mat1, matrix* mat2) {
     if (mat1->cols != mat2->rows) return NULL;
     
     matrix* ptr = allocateMatrix(mat1->rows, mat2->cols);
@@ -210,4 +210,51 @@ matrix* multiplyMatrix(matrix* mat1, matrix* mat2) {
             ptr->data[i][j] = calculateMatrixProduct(i, j, mat1, mat2);
 
     return ptr;
+}
+
+matrix* addMatrix(matrix* mat1, matrix* mat2) {
+    if (mat1->rows != mat2->rows || mat1->cols != mat2->cols) return NULL;
+
+    matrix* ptr = allocateMatrix(mat1->rows, mat1->cols);
+    for (int i = 0; i < ptr->rows; i++)
+        for (int j = 0; j < ptr->cols; j++)
+            ptr->data[i][j] = mat1->data[i][j] + mat2->data[i][j];
+
+    return ptr;
+}
+
+matrix* subMatrix(matrix* mat1, matrix* mat2) {
+    if (mat1->rows != mat2->rows || mat1->cols != mat2->cols) return NULL;
+
+    matrix* ptr = allocateMatrix(mat1->rows, mat1->cols);
+    for (int i = 0; i < ptr->rows; i++)
+        for (int j = 0; j < ptr->cols; j++)
+            ptr->data[i][j] = mat1->data[i][j] - mat2->data[i][j];
+
+    return ptr;
+}
+
+matrix* divMatrix(matrix* mat1, matrix* mat2) {
+    if (mat1->rows != mat2->rows || mat1->cols != mat2->cols) return NULL;
+
+    matrix* ptr = allocateMatrix(mat1->rows, mat1->cols);
+    for (int i = 0; i < ptr->rows; i++)
+        for (int j = 0; j < ptr->cols; j++) {
+            if (mat2->data[i][j] == 0) {
+                fprintf(stderr, "[ERROR] Division by zero in element located at (%i, %i)", i, j);
+                return NULL;
+            }
+            ptr->data[i][j] = mat1->data[i][j] / mat2->data[i][j];
+        }
+
+    return ptr;
+}
+
+double determinant(matrix* mat) {
+    return 0;
+}
+
+matrix* inverse(matrix* mat) {
+    if (mat->cols != mat->rows) return NULL;
+    return NULL;
 }

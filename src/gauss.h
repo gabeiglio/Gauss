@@ -47,6 +47,13 @@ void colSwap(matrix* mat, unsigned int col1, unsigned int col2);
 
 matrix* transpose(matrix* mat);
 matrix* addMatrix(matrix* mat1, matrix* mat2);
-matrix* multiplyMatrix(matrix* mat1, matrix* mat2);
+matrix* subMatrix(matrix* mat1, matrix* mat2);
+matrix* divMatrix(matrix* mat1, matrix* mat2);
+matrix* mulMatrix(matrix* mat1, matrix* mat2);
+
+double determinant(matrix* mat);
+
+matrix* inverse(matrix* mat);
+matrix* solveMatrix(matrix* a, matrix* b);
 
 #endif
