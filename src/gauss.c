@@ -172,6 +172,15 @@ void setRow(matrix* mat, unsigned int row, double value) {
 
 }
 
+void setDiagonal(matrix* mat, double value) {
+    unsigned int index = 0;
+
+    while (index < mat->rows && index < mat->cols) {
+        mat->data[index][index] = value;
+        index++;
+    }
+}
+
 void scalarOperation(matrix* mat, double scalar, operation op) {
     for (int i = 0; i < mat->rows; i++)
         for (int j = 0; j < mat->cols; j++)

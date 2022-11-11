@@ -40,6 +40,7 @@ matrix* getRow(matrix* mat, unsigned int row);
 
 void setCol(matrix* mat, unsigned int col, double value);
 void setRow(matrix* mat, unsigned int row, double value);
+void setDiagonal(matrix* mat, double value);
 
 // Scalar operations
 void scalarOperation(matrix* mat, double scalar, operation op);
