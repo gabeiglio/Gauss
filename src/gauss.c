@@ -4,7 +4,7 @@ matrix* allocateMatrix(unsigned int rows, unsigned int cols) {
     // Check that rows and cols are bigger than 0
     //TODO: Diagnostic
     if (rows == 0 || cols == 0) {
-        fprintf(stderr, "[ERROR] Cannot allocate a matrix of dimension 0 by 0");
+        fprintf(stderr, "[ERROR] Cannot allocate a matrix of dimension 0 by 0\n");
         return NULL;
     }
 
@@ -17,7 +17,7 @@ matrix* allocateMatrix(unsigned int rows, unsigned int cols) {
 
     // TODO: Diagnostic
     if (tempData == NULL) {
-        fprintf(stderr, "[ERROR] Error allocating matrix, possible due to available space");
+        fprintf(stderr, "[ERROR] Error allocating matrix, possible due to available space\n");
         return NULL;
     }
     
@@ -154,7 +154,7 @@ matrix* getRow(matrix* mat, unsigned int row) {
 
 void setCol(matrix* mat, unsigned int col, double value) {
     if (col > mat->cols) {
-        fprintf(stderr, "[ERROR] Trying to set a value in column: %i, but the matrix has %i columns", col, mat->cols);
+        fprintf(stderr, "[ERROR] Trying to set a value in column: %i, but the matrix has %i columns\n", col, mat->cols);
         return;
     }
 
@@ -165,7 +165,7 @@ void setCol(matrix* mat, unsigned int col, double value) {
 
 void setRow(matrix* mat, unsigned int row, double value) {
     if (row > mat->rows) {
-        fprintf(stderr, "[ERROR] Trying to set a value in row: %i, but the matrix has %i columns", row, mat->cols);
+        fprintf(stderr, "[ERROR] Trying to set a value in row: %i, but the matrix has %i columns\n", row, mat->cols);
         return;
     }
 
@@ -188,15 +188,16 @@ void scalarOperation(matrix* mat, double scalar, operation op) {
         for (int j = 0; j < mat->cols; j++)
             switch (op) {
                 case add: mat->data[i][j] += scalar; break;
-                case substract: mat->data[i][j] -= scalar; break;
-                case divide: mat->data[i][j] /= scalar; break;
                 case multiply: mat->data[i][j] *= scalar; break;
             }
 }
 
 void rowSwap(matrix* mat, unsigned int row1, unsigned int row2) {
-    if (row1 > mat->rows || row2 > mat->rows)
+    if (row1 > mat->rows || row2 > mat->rows) {
+        fprintf(stderr, "[ERROR] Cannot acces the row since matrix has %i rows\n", mat->rows);
         return;
+    }
+        
 
     double* tmp = mat->data[row1 - 1];
     mat->data[row1 - 1] = mat->data[row2 - 1];
@@ -204,8 +205,10 @@ void rowSwap(matrix* mat, unsigned int row1, unsigned int row2) {
 }
 
 void colSwap(matrix* mat, unsigned int col1, unsigned int col2) {
-    if (col1 > mat->cols || col2 > mat->cols)
+    if (col1 > mat->cols || col2 > mat->cols) {
+        fprintf(stderr, "[ERROR] Cannot acces the row since matrix has %i rows\n", mat->rows);
         return;
+    }
 
     for (int i = 0; i < mat->rows; i++) {
         double tmp = mat->data[i][col1 - 1];
