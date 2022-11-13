@@ -15,9 +15,7 @@ typedef struct {
 
 typedef enum {
     add,
-    substract,
     multiply,
-    divide
 } operation;
 
 // All initializers of matrix
