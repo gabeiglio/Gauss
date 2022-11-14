@@ -47,6 +47,9 @@ void scalarOperation(matrix* mat, double scalar, operation op);
 void rowSwap(matrix* mat, unsigned int row1, unsigned int row2);
 void colSwap(matrix* mat, unsigned int col1, unsigned int col2);
 
+matrix* deleteRow(matrix* mat, unsigned int row);
+matrix* deleteCol(matrix* mat, unsigned int col);
+
 matrix* transpose(matrix* mat);
 matrix* addMatrix(matrix* mat1, matrix* mat2);
 matrix* mulMatrix(matrix* mat1, matrix* mat2);
