@@ -184,8 +184,8 @@ void setDiagonal(matrix* mat, double value) {
 }
 
 matrix* deleteRow(matrix* mat, unsigned int row) {
-    if (row > mat->rows) {
-        fprintf(stderr, "[ERROR] Trying to delete a row: %i, but the matrix has %i rows\n", row, mat->rows);
+    if (row > mat->rows || row < 1) {
+        fprintf(stderr, "[ERROR] Trying to delete row: %i, but the matrix has %i rows\n", row, mat->rows);
         return NULL;
     }
 
@@ -200,17 +200,37 @@ matrix* deleteRow(matrix* mat, unsigned int row) {
                 result->data[result_index][i] = mat->data[mat_index][i];
 
             result_index++;
-            mat_index++;
-        } else {
-            mat_index++;
         }
+
+        mat_index++;
     }
 
     return result;
 }
 
 matrix* deleteCol(matrix* mat, unsigned int col) {
+    if (col > mat->cols || col < 1) {
+        fprintf(stderr, "[ERROR] Trying to delete column: %i, but the matrix has %i columns\n", col, mat->cols);
+        return NULL;
+    }
 
+    matrix* result = allocateMatrix(mat->rows, mat->cols - 1);
+
+    unsigned int result_index = 0;
+    unsigned int mat_index = 0;
+
+    while (mat_index != mat->cols) {
+        if (mat_index != col - 1) {
+            for (int i = 0; i < mat->rows; i++)
+                result->data[i][result_index] = mat->data[i][mat_index];
+
+            result_index++;
+        }
+
+        mat_index++;
+    }
+
+    return result;
 }
 
 void scalarOperation(matrix* mat, double scalar, operation op) {

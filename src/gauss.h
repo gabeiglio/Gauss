@@ -57,6 +57,6 @@ matrix* mulMatrix(matrix* mat1, matrix* mat2);
 double determinant(matrix* mat);
 
 matrix* inverse(matrix* mat);
-matrix* solveMatrix(matrix* a, matrix* b);
+matrix* solveLinearSystem(matrix* a, matrix* b);
 
 #endif
