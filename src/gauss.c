@@ -267,6 +267,27 @@ void colSwap(matrix* mat, unsigned int col1, unsigned int col2) {
     }
 }
 
+matrix* concatenate(matrix* mat1, matrix* mat2) {
+    if (mat1->rows != mat2->rows) {
+        fprintf(stderr, "[ERROR] Cannot concatenate matrices with diferent rows");
+        return NULL;
+    }
+
+    matrix* result = allocateMatrix(mat1->rows, mat1->cols + mat2->cols);
+
+    for (int i = 0; i < result->rows; i++) {        
+        
+        for (int j = 0; j < mat1->cols; j++)
+            result->data[i][j] = mat1->data[i][j];
+
+        for (int j = mat1->cols; j < result->cols; j++)
+            result->data[i][j] = mat2->data[i][j - mat1->cols];
+
+    }
+
+    return result;
+}
+
 matrix* transpose(matrix* mat) {
     matrix* result = allocateMatrix(mat->cols, mat->rows);
 
