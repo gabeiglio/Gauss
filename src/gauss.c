@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "gauss.h"
 
 matrix* allocateMatrix(unsigned int rows, unsigned int cols) {
@@ -79,7 +80,8 @@ matrix* initMatrixFromFilepath(const char* filepath) {
     FILE* inputFile = fopen(filepath, "r");
 
     if (!inputFile) {
-        //TODO: Diagnostic
+        fprintf(stderr, "[ERROR] Could not read file located at: %s\n", filepath);
+        return NULL;
     }
 
     unsigned int rows, cols;
@@ -331,7 +333,7 @@ matrix* addMatrix(matrix* mat1, matrix* mat2) {
 }
 
 double determinant(matrix* mat) {
-    return 0;
+    
 }
 
 matrix* inverse(matrix* mat) {
