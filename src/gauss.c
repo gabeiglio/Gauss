@@ -3,7 +3,6 @@
 
 matrix* allocateMatrix(unsigned int rows, unsigned int cols) {
     // Check that rows and cols are bigger than 0
-    //TODO: Diagnostic
     if (rows == 0 || cols == 0) {
         fprintf(stderr, "[ERROR] Cannot allocate a matrix of dimension 0 by 0\n");
         return NULL;
@@ -16,7 +15,6 @@ matrix* allocateMatrix(unsigned int rows, unsigned int cols) {
     for (int i = 0; i < rows; i++)
         tempData[i] = (double*)malloc(cols * sizeof(double));
 
-    // TODO: Diagnostic
     if (tempData == NULL) {
         fprintf(stderr, "[ERROR] Error allocating matrix, possible due to available space\n");
         return NULL;
