@@ -343,7 +343,7 @@ double determinant(matrix* mat) {
 
     for (int i = 0; i < mat->cols; i++) {
         double a = mat->data[0][i];
-        double data[mat->rows + mat->cols - 2];
+        double data[(mat->rows - 1) * (mat->cols - 1)];
         
         unsigned int r = 0;
 
