@@ -331,10 +331,51 @@ matrix* addMatrix(matrix* mat1, matrix* mat2) {
 }
 
 double determinant(matrix* mat) {
-    
+    if (mat->cols != mat->rows) {
+        fprintf(stderr, "[ERROR] Determinant can only be applied to squared matrices\n");
+        return -1;
+    }
+
+    if (mat->cols == 1) return mat->data[0][0];
+    if (mat->cols == 2) return (mat->data[0][0]*mat->data[1][1]) - (mat->data[0][1]*mat->data[1][0]);
+
+    double result = 0;
+
+    for (int i = 0; i < mat->cols; i++) {
+        double a = mat->data[0][i];
+        double data[mat->rows + mat->cols - 2];
+        
+        unsigned int r = 0;
+
+        for (int j = 1; j < mat->rows; j++) {
+            for (int k = 0; k < mat->cols; k++)
+                if (k != i) data[r++] = mat->data[j][k];
+        }
+
+        matrix* minor = initMatrixFromArray(mat->rows - 1, mat->cols - 1, data);
+        
+        int sign = i % 2 == 0 ? -1 : 1;
+        result = result + (sign *  a) * determinant(minor);
+
+        freeMatrix(minor);
+    }
+
+    return result * -1;
 }
 
 matrix* inverse(matrix* mat) {
     if (mat->cols != mat->rows) return NULL;
     return NULL;
 }
+
+
+
+
+
+
+
+
+
+
+
+
