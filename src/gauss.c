@@ -365,6 +365,7 @@ double determinant(matrix* mat) {
 
 matrix* inverse(matrix* mat) {
     if (mat->cols != mat->rows) return NULL;
+    fprintf(stderr, "[ERROR] Inverse not implemented yet\n");
     return NULL;
 }
 
