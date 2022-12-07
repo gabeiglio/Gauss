@@ -8,9 +8,7 @@ $ git clone https://github.com/gabeiglio/Gauss.git
 $ cd Gauss 
 $ mkdir build
 $ make gauss
-
 ```
-
 ## Features:
 
 * Creating Matrices:
